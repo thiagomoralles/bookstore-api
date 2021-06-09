@@ -30,5 +30,5 @@ public class Categoria implements Serializable {
 	private String descricao;
 	
 	@OneToMany(mappedBy = "categoria")
-	private List<Livros> livros = new ArrayList<>();
+	private List<Livro> livros = new ArrayList<>();
 }
