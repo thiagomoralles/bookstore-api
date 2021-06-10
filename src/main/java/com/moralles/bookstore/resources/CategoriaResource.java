@@ -17,14 +17,9 @@ public class CategoriaResource {
 
 	@Autowired
 	CategoriaService categoriaService;
-	
+
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Categoria> findById(@PathVariable Integer id){
-		Categoria categoria = categoriaService.findById(id);
-		if (categoria != null) {
-			return ResponseEntity.ok().body(categoria);
-		} else {
-			return (ResponseEntity<Categoria>) ResponseEntity.status(HttpStatus.NOT_FOUND);
-		}
+	public ResponseEntity<Categoria> findById(@PathVariable Integer id) {
+		return ResponseEntity.ok().body(categoriaService.findById(id));
 	}
 }
