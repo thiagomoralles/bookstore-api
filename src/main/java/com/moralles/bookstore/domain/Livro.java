@@ -28,6 +28,7 @@ public class Livro implements Serializable {
 	private Integer id;
 	@Column(name = "titulo")
 	private String titulo;
+	@Column(name = "NOME_AUTOR")
 	private String nomeAutor;
 	private String texto;
 	
