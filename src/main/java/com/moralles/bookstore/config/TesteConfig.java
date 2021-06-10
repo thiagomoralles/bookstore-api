@@ -1,4 +1,4 @@
-package com.moralles.bookstore.Config;
+package com.moralles.bookstore.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
