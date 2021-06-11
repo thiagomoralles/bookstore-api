@@ -29,7 +29,12 @@ public class CategoriaService {
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Categoria insert(Categoria categoria) {
+	public Categoria create(Categoria categoria) {
+		return categoriaRepository.save(categoria);
+	}
+
+	public Categoria update(Integer id, Categoria categoria) {
+		categoria.setId(id);
 		return categoriaRepository.save(categoria);
 	}
 }
