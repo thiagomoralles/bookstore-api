@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.moralles.bookstore.domain.Categoria;
@@ -23,8 +24,12 @@ public class CategoriaService {
 				"Objeto não encontrado! Id: " + id + " Tipo: " + Categoria.class.getName()));
 	}
 	
-	@Transactional
 	public List<Categoria> findAll() {
 		return categoriaRepository.findAll();
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Categoria insert(Categoria categoria) {
+		return categoriaRepository.save(categoria);
 	}
 }
