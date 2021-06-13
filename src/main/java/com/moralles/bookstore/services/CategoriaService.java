@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,6 +40,10 @@ public class CategoriaService {
 	}
 
 	public void delete(Integer id) {
-		categoriaRepository.deleteById(id);;
+		try {
+			categoriaRepository.deleteById(id);;			
+		} catch (DataIntegrityViolationException e) {
+			throw new com.moralles.bookstore.services.exceptions.DataIntegrityViolationException("Categoria não pode ser deletada! Possui livros associados");
+		}
 	}
 }
