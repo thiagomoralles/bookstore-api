@@ -34,11 +34,13 @@ public class CategoriaService {
 		return categoriaRepository.save(categoria);
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
 	public Categoria update(Integer id, Categoria categoria) {
 		categoria.setId(id);
 		return categoriaRepository.save(categoria);
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(Integer id) {
 		try {
 			categoriaRepository.deleteById(id);;			
