@@ -3,11 +3,14 @@ package com.moralles.bookstore.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.moralles.bookstore.domain.Categoria;
 import com.moralles.bookstore.domain.Livro;
 import com.moralles.bookstore.repositories.LivroRepository;
 import com.moralles.bookstore.services.exceptions.ObjectNotFoundException;
@@ -28,7 +31,9 @@ public class LivroService {
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Livro create(Livro livro) {
+	public Livro create(Livro livro, Integer id_categoria) {
+		livro.setCategoria(new Categoria());
+		livro.getCategoria().setId(id_categoria);
 		return livroRepository.save(livro);
 	}
 	
@@ -41,4 +46,5 @@ public class LivroService {
 	public void delete(Integer id) {
 		livroRepository.deleteById(id);
 	}
+
 }
