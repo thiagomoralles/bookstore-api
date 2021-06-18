@@ -33,17 +33,17 @@ public class Livro implements Serializable {
 	private Integer id;
 	
 	@NotEmpty(message = "O campo TITULO é obrigatório!")
-	@Length(min = 5, max = 100, message = "O campo TITULO deve ter entre 3 e 100 caracteres!")
+	@Length(min = 3, max = 100, message = "O campo TITULO deve ter entre 3 e 100 caracteres!")
 	@Column(name = "TITULO")
 	private String titulo;
 	
 	@NotEmpty(message = "O campo NOME DO AUTOR é obrigatório!")
-	@Length(min = 5, max = 100, message = "O campo NOME DO AUTOR deve ter entre 3 e 100 caracteres!")
+	@Length(min = 3, max = 100, message = "O campo NOME DO AUTOR deve ter entre 3 e 100 caracteres!")
 	@Column(name = "NOME_AUTOR")
 	private String nomeAutor;
 	
 	@NotEmpty(message = "O campo TEXTO é obrigatório!")
-	@Length(min = 5, max = 1000, message = "O campo TEXTO deve ter entre 3 e 1000 caracteres!")
+	@Length(min = 5, max = 1000, message = "O campo TEXTO deve ter entre 5 e 1000 caracteres!")
 	@Column(name = "TEXTO")
 	private String texto;
 	
