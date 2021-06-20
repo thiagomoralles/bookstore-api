@@ -42,10 +42,6 @@ public class CategoriaService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(Integer id) {
-		try {
-			categoriaRepository.deleteById(id);;			
-		} catch (DataIntegrityViolationException e) {
-			throw new com.moralles.bookstore.services.exceptions.DataIntegrityViolationException("Categoria não pode ser deletada! Possui livros associados");
-		}
+		categoriaRepository.deleteById(id);	
 	}
 }

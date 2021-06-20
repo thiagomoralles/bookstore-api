@@ -59,7 +59,11 @@ public class CategoriaResource {
 	
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
-		categoriaService.delete(id);
+		try {
+			categoriaService.delete(id);
+		} catch (Exception e) {
+			throw new com.moralles.bookstore.services.exceptions.DataIntegrityViolationException("Categoria não pode ser deletada! Possui livros associados");
+		}
 		return ResponseEntity.noContent().build();
 	}
 }
