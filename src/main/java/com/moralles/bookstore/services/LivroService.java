@@ -30,6 +30,11 @@ public class LivroService {
 		return livroRepository.findAll();
 	}
 	
+	public List<Livro> findAllByCategoria(Integer idCategoria) {
+		List<Livro> livros = livroRepository.findByCategoria_id(idCategoria);
+		return livros;
+	}
+	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Livro create(Livro livro, Integer id_categoria) {
 		livro.setCategoria(new Categoria());

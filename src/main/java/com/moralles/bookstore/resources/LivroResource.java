@@ -41,6 +41,11 @@ public class LivroResource {
 		return ResponseEntity.ok().body(livroService.findAll().stream().map(obj -> new LivroDTO(obj)).collect(Collectors.toList()));
 	}
 	
+	@GetMapping(value = "/findAllByCategoria")
+	public ResponseEntity<List<LivroDTO>> findAllByCategoria(@RequestParam Integer idCategoria) {
+		return ResponseEntity.ok().body(livroService.findAllByCategoria(idCategoria).stream().map(obj -> new LivroDTO(obj)).collect(Collectors.toList()));
+	}
+	
 	@PostMapping(value = "/create")
 	public ResponseEntity<Livro> create(@RequestParam(value = "categoria", defaultValue = "0") Integer id_categoria, @Valid @RequestBody Livro livro) {
 		return ResponseEntity.ok().body(livroService.create(livro, id_categoria));
