@@ -16,6 +16,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -42,6 +44,7 @@ public class Categoria implements Serializable {
 	@Column(name = "DESCRICAO")
 	private String descricao;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY)
 	private List<Livro> livros = new ArrayList<>();
 }
